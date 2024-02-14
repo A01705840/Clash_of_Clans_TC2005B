@@ -18,6 +18,10 @@ h1 {
     color: var(--color-secundario);
     font-size: 2rem;
 }
+.matricula {
+    color: var(--color-secundario);
+    font-size: 2rem;
+}
 
 label {
     color: var(--color-terciario);
@@ -43,4 +47,9 @@ input[type="color" i] {
     border-color: buttonborder;
     border-image: initial;
     padding: 1px 2px;
+}
+Legend {
+    background-color: #0c696d;
+    color: white;
+    font-size: 2rem;
 }
