@@ -1,7 +1,7 @@
 :root {
     --color-primario: #ff023f;
     --color-secundario: #531d0c;
-    --color-terciario: #0000ff;
+    --color-terciario: #0c696d;
 }
 html {
     font-size: 62.5%;
@@ -17,4 +17,30 @@ h1 {
 .nombre {
     color: var(--color-secundario);
     font-size: 2rem;
+}
+
+label {
+    color: var(--color-terciario);
+    font-size: 2rem;
+}
+
+input {
+    font-size: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+}
+input[type="color" i] {
+    appearance: auto;
+    inline-size: 50px;
+    block-size: 27px;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    color: buttontext;
+    border-width: 1px;
+    border-style: solid;
+    border-color: buttonborder;
+    border-image: initial;
+    padding: 1px 2px;
 }
