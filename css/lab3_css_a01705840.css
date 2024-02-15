@@ -2,9 +2,20 @@
     --color-primario: #ff023f;
     --color-secundario: #531d0c;
     --color-terciario: #0c696d;
+    --negro: rgb(555);
+    ---blanco:rgb(333);
+}
+body {
+    line-height: 1.5;
+    padding: 4em 1em;
 }
 html {
     font-size: 62.5%;
+    margin: 0 auto;
+    max-width: 50em;
+    font-family: 'Helvetica','Arial', sans-serif;
+    background-color: var(---blanco);
+
 }
 h1 {
     color: var(--color-primario);
@@ -31,7 +42,7 @@ label {
 input {
     font-size: 2rem;
     padding: 1rem;
-    margin: 1rem;
+    margin: 0 auto;
     text-align: center;
 }
 input[type="color" i] {
@@ -52,4 +63,7 @@ Legend {
     background-color: #0c696d;
     color: white;
     font-size: 2rem;
+}
+p {
+    color: var(--negro)
 }
