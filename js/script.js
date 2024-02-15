@@ -7,5 +7,25 @@ alert('hola mundo');
 var precio = 100;
 console.log(precio);
 
-const nombre = prompt('Cual es tu nombre?');
-console.log("Hola "+nombre);
+let nombre = prompt('Cual es tu nombre?');
+console.log("Hola "+ nombre);
+
+if(confirm('Deseas continuar?')){
+    console.log('Continuamos')
+    }else{
+        console.log('Cancelamos')
+    }
+
+function atacar(){
+    console.log('Atacar a los goblins');
+}
+
+atacar();
+
+//funciones modernas
+let accion = () => {
+    console.log('Construir');
+}
+
+console.log(accion);
+accion();
