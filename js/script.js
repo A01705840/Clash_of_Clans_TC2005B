@@ -29,3 +29,32 @@ let accion = () => {
 
 console.log(accion);
 accion();
+
+// arreglos
+const arreglo = ['Elemento'];
+const arreglo2 = new Array('Elemento');
+
+arreglo.push("Otro elemento");
+arreglo[10] = 'uno mas';
+
+arreglo['dos'] = 2;
+console.log(arreglo);
+
+// recorrer el arreglo de valores
+for (let posicion of arreglo){
+    console.log(posicion);
+}
+
+// recorrer el arreglo de indices
+for (let posicion in arreglo){
+    console.log(posicion);
+}
+
+// objetos
+const objeto = {
+    nombre: 'Goblin',
+    vida: 100,
+    atacar: function(){
+        console.log('Atacar');
+    }
+};
