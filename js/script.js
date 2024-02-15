@@ -58,3 +58,8 @@ const objeto = {
         console.log('Atacar');
     }
 };
+
+console.log(objeto);
+
+// modificar html
+document.write('Hola mundo');
