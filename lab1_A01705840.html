@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <link rel="preload" href="css/styles.min.css">
         <link rel="stylesheet" href="css/styles.min.css">
         <link rel="LAB_1" href="lab_1.html">
@@ -9,6 +10,8 @@
 
     <body>
         <a href="lab_1.html"> LAB 1</a>
+        <a href="lab_3_css.html">LAB 3</a>
+        <a href="lab_4_js.html">LAB 4</a>
         <p class="nombre">Nombre: María José Soto</p>
         <p class="matricula">Matrícula: A01705840</p>
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alien" width="88" height="88" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6f32be" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -18,185 +21,9 @@
             <path d="M8 11l2 2" />
             <path d="M16 11l-2 2" />
         </svg>
-          
-        <p>¿Cuál es la diferencia entre Internet y la World Wide Web?
-        </p>
-        <p>Internet es una red de redes que conecta a millones de computadoras alrededor del mundo. La World Wide Web es un sistema de información que permite a los documentos ser conectados a través de enlaces de hipertexto y ser vistos por navegadores web. La World Wide Web es una de las muchas aplicaciones que existen en Internet.</p>
-        <p>Cuales son las partes de una URL?</p>
-        <p>Una URL (Uniform Resource Locator) tiene las siguientes partes:</p>
-        <ul>
-            <li>Protocolo: indica el protocolo que se usará para acceder al recurso (http, https, ftp, etc.)</li>
-            <li>Dominio: indica el nombre del servidor que aloja el recurso</li>
-            <li>Puerto: indica el puerto que se usará para acceder al recurso</li>
-            <li>Ruta: indica la ubicación del recurso en el servidor</li>
-            <li>Query: indica los parámetros que se enviarán al servidor</li>
-            <li>Fragmento: indica la ubicación de un fragmento específico dentro del recurso</li>
-        <p>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</p>
-        <p>
-        <ul>
-            <li>GET: solicita una representación de un recurso específico. Las solicitudes que usan el método GET solo deben recuperar datos.</li>
-            <li>HEAD: solicita una respuesta idéntica a la de una solicitud GET, pero sin el cuerpo de la respuesta.</li>
-            <li>POST: se utiliza para enviar datos a un servidor para crear o actualizar un recurso.</li>
-            <li>PUT: reemplaza todas las representaciones actuales del recurso de destino con la carga útil de la solicitud.</li>
-            <li>PATCH: se utiliza para aplicar modificaciones parciales a un recurso.</li>
-            <li>DELETE: borra un recurso específico.</li>
-        </p>
-        <p>
-            ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?
-        </p>
-        <p>Se debe utilizar el método POST. Esto se debe a que el método POST se utiliza para enviar datos a un servidor para crear o actualizar un recurso. En el caso de un formulario HTML, se están enviando datos al servidor para que este los procese y los almacene en una base de datos.</p>
-        <p>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?
-        </p>
-        <p>Se utiliza el método GET. Este método solicita una representación de un recurso específico. Las solicitudes que usan el método GET solo deben recuperar datos.</p>
-        <p>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?
-        </p>
-        <p>Un código de respuesta 200 indica que la solicitud ha tenido éxito. El significado de un código de respuesta 200 es que la solicitud ha tenido éxito. El significado de un código de respuesta 200 es que la solicitud ha tenido éxito. No ocurrió ningún error.
-        </p>
-        <p>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?
-        </p>
-        <p>Si, es responsabilidad del desarrollador corregir el error 404. El error 404 indica que el servidor no pudo encontrar el recurso solicitado. Esto puede deberse a que el recurso fue eliminado, movido o renombrado. Es responsabilidad del desarrollador asegurarse de que los enlaces en el sitio web estén actualizados y que los recursos estén disponibles.
-        </p>
-        <p>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?
-        </p>
-        <p>Si, es responsabilidad del desarrollador corregir el error 500. El error 500 indica que el servidor encontró una condición inesperada que le impidió cumplir con la solicitud. Esto puede deberse a un error en el código del servidor. Es responsabilidad del desarrollador asegurarse de que el código del servidor esté libre de errores y que el servidor pueda manejar las solicitudes de manera adecuada. </p>
-        <p>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.
-        </p>
-        <p>Un atributo HTML5 que esté desaprobado significa que ya no se recomienda su uso. Esto se debe a que el atributo ha sido reemplazado por una nueva característica o ya no es compatible con los estándares actuales. Algunos elementos de HTML 4 que en HTML5 están desaprobados son:</p>
-        <p>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?
-        </p>
-        <p>
-        <ul>
-            <li>HTML 4 utiliza un DOCTYPE para definir la versión de HTML que se está utilizando. HTML5 utiliza un DOCTYPE más simple y conciso.</li>
-            <li>HTML 4 utiliza atributos para definir el tipo de documento y el idioma. HTML5 utiliza un atributo de metadatos para definir el tipo de documento y el idioma.</li>
-            <li>HTML 4 utiliza atributos para definir el tipo de contenido y el tipo de codificación. HTML5 utiliza un atributo de metadatos para definir el tipo de contenido y el tipo de codificación.</li>
-            <li>HTML 4 utiliza atributos para definir el tipo de contenido y el tipo de codificación. HTML5 utiliza un atributo de metadatos para definir el tipo de contenido y el tipo de codificación.</li>
-            <li>HTML 4 utiliza atributos para definir el tipo de contenido y el tipo de codificación. HTML5 utiliza un atributo de metadatos para definir el tipo de contenido y el tipo de codificación.</li>
-        </p>
-        <p>¿Qué componentes de estructura y estilo tiene una tabla?
-        </p>
-        <p>Una tabla tiene los siguientes componentes de estructura y estilo:</p>
-        <ul>
-            <li>Elemento de tabla: define una tabla HTML</li>
-            <li>Elemento de fila: define una fila en una tabla HTML</li>
-            <li>Elemento de encabezado de tabla: define un encabezado de tabla HTML</li>
-            <li>Elemento de celda de tabla: define una celda en una tabla HTML</li>
-            <li>Elemento de pie de tabla: define un pie de tabla HTML</li>
-            <li>Elemento de columna de tabla: define una columna en una tabla HTML</li>
-        </ul>
-        <p>¿Cuáles son los principales controles de una forma HTML5?
-        </p>
-        <p>Los principales controles de una forma HTML5 son:</p>
-        <ul>
-            <li>Elemento de entrada: define un campo de entrada en un formulario HTML</li>
-            <li>Elemento de selección: define un campo de selección en un formulario HTML</li>
-            <li>Elemento de área de texto: define un campo de área de texto en un formulario HTML</li>
-            <li>Elemento de botón: define un botón en un formulario HTML</li>
-            <li>Elemento de etiqueta: define una etiqueta para un campo de formulario HTML</li>
-            <li>Elemento de salida: define un campo de salida en un formulario HTML</li>
-        </ul>
-        <p>Qué tanto soporte HTML5 tiene el navegador que utilizas?</p>
-        <p>El navegador que utilizo tiene un buen soporte para HTML5. Puedo utilizar la mayoría de las características de HTML5 sin problemas.</p>
-        <p>¿Cuál es el ciclo de vida de los sistemas de información?</p>
-        <p>El ciclo de vida de un sistema de información es un enfoque por fases del análisis y diseño que sostiene que los sistemas son desarrollados de mejor manera mediante el uso de un ciclo especifico de actividades del analista y del usuario.</p>
-        <p>¿Cuál es el ciclo de desarrollo de sistemas de información?
-        </p>
-        <p>El ciclo de desarrollo de sistemas de información es el proceso de desarrollo, implementación y mantenimiento de un sistema de información. El ciclo de desarrollo de sistemas de información consta de las siguientes etapas:</p>
-        <ul>
-            <li>Planificación: se define el alcance, los objetivos y los requisitos del sistema de información.</li>
-            <li>Análisis: se recopilan y analizan los requisitos del sistema de información.</li>
-            <li>Diseño: se diseñan los componentes del sistema de información.</li>
-            <li>Desarrollo: se desarrollan los componentes del sistema de información.</li>
-            <li>Implementación: se implementa el sistema de información.</li>
-            <li>Mantenimiento: se mantiene y mejora el sistema de información.</li>
-        </ul>
-        <img src="img/gatoconfundido.jpg" alt="">
-        <form>
-            <fieldset>
-                <legend>Formulario Lab 3 CSS</legend>
-                <div>
-                    <label for="Nombre"> Nombre </label>
-                    <input type="text" placeholder="Ingresa tu nombre">
-                </div>
-                <div>
-                    <label for="Matricula"> Matricula</label>
-                    <input type="text" placeholder="Ingresa tu Matricula">
-                </div>
-                <div>
-                    <label for="Correo"> Correo</label>
-                    <input type="text" placeholder="Ingresa tu Correo">
-                </div>
-                <div>
-                    <label for="Escribe">Escribe lo que quieras</label>
-                    <textarea name="escribe" ></textarea>
-                </div>
-                <div>
-                    <label for="color">Color Favorito</label>
-                    <input type="color" autofocus>
-                </div>
-                <div>
-                    <input type="submit" value="Enviar">
-                </div>
-            </fieldset>
-        </form>
-        <p> ¿cuál es tu recomendación sobre el uso de !important en un CSS? </p>
-        <p>El uso de !important no es recomendable porque sobreescribe cualquier otro estilo, por lo que significa que algun estilo no esta puesto correctamente</p>
-        <p>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?
-        </p>
-        <p>Es importante porque la imagen puede tener un tamaño no deseado y modificar el aspecto de la página.
-        </p>
-        <p>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?
-        </p>
-        <p>Cuando se utiliza el % la unidades son en base al tamaño del dispositivo
-            Al usar pt y px las unidades son fijas y no se ajustan al tamaño del dispositivo
-            Yo usaría rem ya que es una unidad relativa al tamaño de la fuente del elemento
-        </p>
-        <p>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</p>
-        <p>El uso de una versión minimizada del CSS mejora el rendimiento del sitio porque reduce el tamaño del archivo CSS, lo que significa que el navegador puede cargar el archivo más rápido. Esto puede mejorar el tiempo de carga de la página y la experiencia del usuario.</p>
-        
-        <table>
-            <colgroup>
-                <col span="2" style="background-color:grey">
-                <col style="background-color:black">
-                <tr>
-                    <th>
-                        Hola Mundo
-                    </th>
-                    <th>
-                        Hola Vida
-                    </th>
-                    <th> Holaaaaaaa</th>
-                </tr>
-                <tr>
-                    <td>
-                        Hola Amigos
-                    </td>
-                    <td>
-                        Hola Corazon
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Hola Amigos
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>
-                        Estoy sufriendo
-                    </td>
-                </tr>
-                <tr>
-                    <th>Ya no</th>
-                </tr>
-            </colgroup>
-        </table>
         
         
         
         
-        
-        <script src="js/script.js"></script>
-        <script src="js/variables.js"></script>
-    </body>
+        </body>
 </html>
