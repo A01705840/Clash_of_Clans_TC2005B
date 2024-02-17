@@ -205,9 +205,11 @@ const team = {
             return wins, losses;
         }
         if(wins > losses){
-            document.write('¡¡¡¡¡¡We won the season!!!!!!'+ "<br>");
-            document.write('<img src="img/we_won_the_season.jpg">');
+            document.write('<img src="img/we_won_the_season.jpg" alt="">');
         }
+        // else{
+        //     document.write('<img src="img/we_won_the_season.jpg" alt="">');
+        // }
 
     }
   };
@@ -235,13 +237,13 @@ opponentPoints: 1
 }
 let game2 = {
 opponent: 'Team 5',
-teamPoints: 0,
+teamPoints: 100,
 opponentPoints: 0
 }
 let game3 = {
 opponent: 'Team 6',
-teamPoints: 0,
-opponentPoints: 0
+teamPoints: 2,
+opponentPoints: 100
 }
 const p_1 =  player1
 const p_2 = player2
@@ -255,7 +257,7 @@ console.log(team._players)
 console.log(team._games)
 team.addPlayer('John','Carlson',33)
 team.addGame('Los Diablos',100,98)
-
+team.did_we_won_season(team._games);
 /*
 4:
 Función: promedios. Parámetros: Un arreglo de arreglos de números. Regresa: Un arreglo con los promedios de cada uno de los renglones de la matriz.
