@@ -259,6 +259,27 @@ console.log(team._games)
 team.addPlayer('John','Carlson',33)
 team.addGame('Los Diablos',100,98)
 team.did_we_won_season(team._games);
+
+
+//Preguntas
+document.write("<br> <br> <br> <br> <br>");
+document.write("Preguntas: <br>");
+document.write("¿Qué diferencias y semejanzas hay entre Java y JavaScript? <br>");
+document.write("JavaScript es un lenguaje de programación de alto nivel, interpretado y orientado a objetos. Java es un lenguaje de programación de alto nivel, interpretado y orientado a objetos. <br>");
+document.write("¿Qué métodos tiene el objeto Date? (Menciona al menos 5*) <br>");
+document.write("getDate(), getDay(), getFullYear(), getHours(), getMilliseconds() <br>");
+document.write("¿Qué métodos tienen los arreglos? (Menciona al menos 5*) <br>");
+document.write("push(), pop(), shift(), unshift(), indexOf() <br>");
+document.write("¿Cómo se declara una variable con alcance local dentro de una función? <br>");
+document.write("let variable = valor; <br>");
+document.write("¿Qué implicaciones tiene utilizar variables globales dentro de funciones? <br>");
+document.write("Las variables globales pueden ser modificadas por cualquier función, lo que puede causar errores en el programa. <br>");
+/*
+¿Qué diferencias y semejanzas hay entre Java y JavaScript?
+¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)
+¿Qué métodos tienen los arreglos? (Menciona al menos 5*)
+¿Cómo se declara una variable con alcance local dentro de una función?
+¿Qué implicaciones tiene utilizar variables globales dentro de funciones?
 /*
 4:
 Función: promedios. Parámetros: Un arreglo de arreglos de números. Regresa: Un arreglo con los promedios de cada uno de los renglones de la matriz.
