@@ -143,21 +143,35 @@ console.log(array);
 */
 // 4:
 //Meter los números separados por comas
+
 let fila_4 = prompt("Ingrese un número de filas: ");
 let columna_4 = prompt("Ingrese un número de columnas: ");
 let array_4 = [];
-for (let i = 0; i < fila_4; i++){
-    for(let j = 0; j < columna_4; j++){
-        let num_4 = prompt("4. Ingrese un número: ");
-        //Imprimir el número de la fila y columna
-        document.write(num_4);
-        //Meter numeros a arreglo
-        array_4[i][j] = num_4;
+for (let i = 0; i < fila_4; i++) {
+    array_4[i] = [];
+    for (let j = 0; j < columna_4; j++) {
+      array_4[i][j] = prompt("4. Ingrese un número: ");
     }
-    document.write("<br>");
 }
+document.write("<br>");
 document.write("El arreglo es: " + array_4 + "<br>");
 
+//Promedios
+console.log(array_4);
+let promediosArray = [];
+
+for (let i = 0; i < array_4.length; i++) {
+    let suma = 0;
+    for (let j = 0; j < array_4[i].length; j++) {
+      suma += Number(array_4[i][j]);
+      console.log(suma);
+    }
+    let promedio = suma / array_4[i].length;
+    promediosArray.push(promedio);
+}
+
+console.log(promediosArray);
+document.write("Los promedios son: " + promediosArray + "<br>");
 
 //5:
 //Ingresar el número
