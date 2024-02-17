@@ -3,7 +3,7 @@ alert('hola mundo');
 // console.error('Error');
 // console.warn('Advertencia');
 // console.assert(1 === 2, 'No son iguales');
-
+/*
 var precio = 100;
 console.log(precio);
 
@@ -140,23 +140,28 @@ document.write("Negativos: " + negativos + "<br>");
 document.write("Ceros: " + ceros + "<br>");
 document.write("Positivos: " + positivos + "<br>");
 console.log(array);
-
-// // 4:
-// //Meter los números separados por comas
-// let input_4 = prompt("Enter a list of numbers separated by commas for:");
-// //Separar los números
-// let pre_array_4 = (input.split(','));
-// //Definir variables
-// let array_4 = [];
-// //Convertir los string a numeros
-// for(let i = 0; i < pre_array_4.length; i++){
-//     array_4[i] = Number(pre_array_4[i]);
-// }
+*/
+// 4:
+//Meter los números separados por comas
+let fila_4 = prompt("Ingrese un número de filas: ");
+let columna_4 = prompt("Ingrese un número de columnas: ");
+let array_4 = [];
+for (let i = 0; i < fila_4; i++){
+    for(let j = 0; j < columna_4; j++){
+        let num_4 = prompt("4. Ingrese un número: ");
+        //Imprimir el número de la fila y columna
+        document.write(num_4);
+        //Meter numeros a arreglo
+        array_4[i][j] = num_4;
+    }
+    document.write("<br>");
+}
+document.write("El arreglo es: " + array_4 + "<br>");
 
 
 //5:
 //Ingresar el número
-let numero = prompt("Ingrese un número");
+let numero = prompt("5. Ingrese un número");
 //Convertir el número a string
 let numero_string = numero.toString();
 //Invertir el string
@@ -207,10 +212,6 @@ const team = {
         if(wins > losses){
             document.write('<img src="img/we_won_the_season.jpg" alt="">');
         }
-        // else{
-        //     document.write('<img src="img/we_won_the_season.jpg" alt="">');
-        // }
-
     }
   };
   
