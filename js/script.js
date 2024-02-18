@@ -3,7 +3,7 @@ alert('hola mundo');
 // console.error('Error');
 // console.warn('Advertencia');
 // console.assert(1 === 2, 'No son iguales');
-/*
+
 var precio = 100;
 console.log(precio);
 
@@ -140,7 +140,7 @@ document.write("Negativos: " + negativos + "<br>");
 document.write("Ceros: " + ceros + "<br>");
 document.write("Positivos: " + positivos + "<br>");
 console.log(array);
-*/
+
 // 4:
 //Meter los números separados por comas
 
@@ -288,15 +288,3 @@ document.write("¿Cómo se declara una variable con alcance local dentro de una 
 document.write("let variable = valor; <br>");
 document.write("¿Qué implicaciones tiene utilizar variables globales dentro de funciones? <br>");
 document.write("Las variables globales pueden ser modificadas por cualquier función, lo que puede causar errores en el programa. <br>");
-/*
-¿Qué diferencias y semejanzas hay entre Java y JavaScript?
-¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)
-¿Qué métodos tienen los arreglos? (Menciona al menos 5*)
-¿Cómo se declara una variable con alcance local dentro de una función?
-¿Qué implicaciones tiene utilizar variables globales dentro de funciones?
-/*
-4:
-Función: promedios. Parámetros: Un arreglo de arreglos de números. Regresa: Un arreglo con los promedios de cada uno de los renglones de la matriz.
-6:
-Crea una solución para un problema de tu elección 
-(puede ser algo relacionado con tus intereses, alguna problemática que hayas identificado en algún ámbito, un problema de programación que hayas resuelto en otro lenguaje, un problema de la ACM, entre otros). El problema debe estar descrito en un documento HTML, y la solución implementada en JavaScript, utilizando al menos la creación de un objeto, el objeto además de su constructor deben tener al menos 2 métodos. Muestra los resultados en el documento HTML. */
