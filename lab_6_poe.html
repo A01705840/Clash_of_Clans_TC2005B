@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/poe.js"></script>
+</head>
+
+<body>
+  <h1 class="grid text-3xl font-bold underline text-red-700 text-center">
+    Einsenhower Matrix
+  </h1>
+  <div id="matrix" class="grid grid-rows-2 grid-cols-2 gap-2 mb-1 max-sm:grid-cols-1 max-sm:grid-rows-1 text-gray-950">
+    <div id="DO" class="bg-green-400 w-full my-3 p-2 text-center text-stone-800 shadow-lg">
+      DO <br> <span class="text-sm text-gray-600">(URGENT & IMPORTANT)</span>
+      <button class="flex justify-center ring-1 ring-green-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg hover:bg-zinc-800">ADD</button>
+      <div class="flex justify-start flex-wrap py-2">
+      <label class="">
+        <div class="grid grid-cols-2">
+          <input type="checkbox" id="cbox1" />  Tarea 1 <br>
+          <input type="checkbox" id="cbox1" />  Tarea 2 <br>
+          <input type="checkbox" id="cbox1" />  Tarea 3 <br>
+          <input type="checkbox" id="cbox1" />  Tarea 4 <br>
+        </div>
+      </label>
+      </div>
+    </div>
+    <div id="DELEGATE" class="bg-yellow-300 w-full my-3 p-3 text-center text-stone-800 shadow-lg ">
+      DELEGATE  <br><span class="text-sm text-gray-600">(NOT URGENT & IMPORTANT) </span>
+      <button class="flex items-start ring-1 ring-yellow-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg  hover:bg-zinc-800">ADD</button>
+      <div class="flex justify-start flex-wrap py-2">
+        <label class="">
+          <div class="grid grid-cols-2">
+            <input type="checkbox" id="cbox1" />  Tarea 1  <span>(1hr 30min)</span> <br>
+            <input type="checkbox" id="cbox1" />  Tarea 2 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 3 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 4 <br>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div id="SCHEDULE" class="bg-blue-400 w-full my-3 p-3 text-center text-stone-800 shadow-lg">
+      SCHEDULE <br> <span class="text-sm text-gray-600"> (URGENT & NOT IMPORTANT)</span>
+      <button class="flex items-center ring-1 ring-blue-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg  hover:bg-zinc-800">ADD</button>
+      <div class="flex justify-start flex-wrap py-2">
+        <label class="">
+          <div class="grid grid-cols-2">
+            <input type="checkbox" id="cbox1" />  Tarea 1 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 2 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 3 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 4 <br>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div id="DELETE" class="bg-red-400 w-full my-3 p-3 text-center text-stone-800 shadow-lg">
+      DELETE <br> <span class="text-sm text-gray-600"> (NOT URGENT & NOT IMPORTANT)</span>
+      <button class="flex items-start ring-1 ring-red-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg hover:bg-zinc-800">ADD</button>
+      <div class="flex justify-start flex-wrap py-2">
+        <label class="">
+          <div class="grid grid-cols-2">
+            <input type="checkbox" id="cbox1" />  Tarea 1 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 2 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 3 <br>
+            <input type="checkbox" id="cbox1" />  Tarea 4 <br>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+<button class="rounded-xl bg-red-200 p-4 items-center">POMODORO</button>
+</body>
+
+</html>
