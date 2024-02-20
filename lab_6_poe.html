@@ -1,22 +1,21 @@
 <!doctype html>
 <html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            clifford: '#da373d',
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            }
           }
         }
       }
-    }
-  </script>
-  <script src="js/poe.js"></script>
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -26,62 +25,100 @@
   <div id="matrix" class="grid grid-rows-2 grid-cols-2 gap-2 mb-1 max-sm:grid-cols-1 max-sm:grid-rows-1 text-gray-950">
     <div id="DO" class="bg-green-400 w-full my-3 p-2 text-center text-stone-800 shadow-lg">
       DO <br> <span class="text-sm text-gray-600">(URGENT & IMPORTANT)</span>
-      <button class="flex justify-center ring-1 ring-green-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg hover:bg-zinc-800">ADD</button>
+      <button id="b-add_do" class="flex justify-center ring-1 ring-green-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg hover:bg-zinc-800">
+        ADD
+      </button>
       <div class="flex justify-start flex-wrap py-2">
-      <label class="">
-        <div class="grid grid-cols-2">
-          <input type="checkbox" id="cbox1" />  Tarea 1 <br>
-          <input type="checkbox" id="cbox1" />  Tarea 2 <br>
-          <input type="checkbox" id="cbox1" />  Tarea 3 <br>
-          <input type="checkbox" id="cbox1" />  Tarea 4 <br>
-        </div>
-      </label>
+        <label class="">
+          <div class="grid grid-cols-3">
+            <div class="grid grid-cols-3">
+              <input type="checkbox" id="cbox1do" /><input type="text" class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" id="cbox1do" /><input type="text" class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" id="cbox1do" /><input type="text" class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+            </div>
+            <div class="grid grid-cols-3">
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md hidden bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+              <input type="checkbox" hidden id="cbox1do" /><input type="text" hidden class="rounded-md bg-green-300 ring-1 shadow-sm w-40"/>  <br>
+            </div>
+          </div>
+        </label>
       </div>
     </div>
     <div id="DELEGATE" class="bg-yellow-300 w-full my-3 p-3 text-center text-stone-800 shadow-lg ">
       DELEGATE  <br><span class="text-sm text-gray-600">(NOT URGENT & IMPORTANT) </span>
-      <button class="flex items-start ring-1 ring-yellow-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg  hover:bg-zinc-800">ADD</button>
+      <button id="b-add_delegate" class="flex items-start ring-1 ring-yellow-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg  hover:bg-zinc-800">ADD</button>
       <div class="flex justify-start flex-wrap py-2">
         <label class="">
-          <div class="grid grid-cols-2">
-            <input type="checkbox" id="cbox1" />  Tarea 1  <span>(1hr 30min)</span> <br>
-            <input type="checkbox" id="cbox1" />  Tarea 2 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 3 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 4 <br>
+          <div class="grid grid-cols-3">
+            <input type="checkbox" id="cbox1del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox2del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox3del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox4del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40 "/> <br>
+            <input type="checkbox" id="cbox1del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox2del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox3del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox4del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40 "/> <br>
+            <input type="checkbox" id="cbox1del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox2del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox3del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40"/> <br>
+            <input type="checkbox" id="cbox4del" /><input type="text" class="rounded-md bg-yellow-200 ring-1 shadow-sm w-40 "/> <br>
           </div>
         </label>
       </div>
     </div>
     <div id="SCHEDULE" class="bg-blue-400 w-full my-3 p-3 text-center text-stone-800 shadow-lg">
       SCHEDULE <br> <span class="text-sm text-gray-600"> (URGENT & NOT IMPORTANT)</span>
-      <button class="flex items-center ring-1 ring-blue-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg  hover:bg-zinc-800">ADD</button>
+      <button id="b-add_schedule" class="flex items-center ring-1 ring-blue-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg  hover:bg-zinc-800">ADD</button>
       <div class="flex justify-start flex-wrap py-2">
         <label class="">
-          <div class="grid grid-cols-2">
-            <input type="checkbox" id="cbox1" />  Tarea 1 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 2 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 3 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 4 <br>
+          <div class="grid grid-cols-3">
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
+            <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-blue-300 ring-1 shadow-sm w-40"/>  <br>
           </div>
         </label>
       </div>
     </div>
-    <div id="DELETE" class="bg-red-400 w-full my-3 p-3 text-center text-stone-800 shadow-lg">
+    <div id="DELETE" class="bg-red-400 w-full my-3 p-3 text-center items-center text-stone-800 shadow-lg">
       DELETE <br> <span class="text-sm text-gray-600"> (NOT URGENT & NOT IMPORTANT)</span>
-      <button class="flex items-start ring-1 ring-red-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg hover:bg-zinc-800">ADD</button>
+      <button id="b-add_delete" class="flex items-center ring-1 ring-red-600 py-2 px-2 rounded-md bg-zinc-600 text-slate-100 text-lg hover:bg-zinc-800">ADD</button>
       <div class="flex justify-start flex-wrap py-2">
-        <label class="">
-          <div class="grid grid-cols-2">
-            <input type="checkbox" id="cbox1" />  Tarea 1 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 2 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 3 <br>
-            <input type="checkbox" id="cbox1" />  Tarea 4 <br>
-          </div>
-        </label>
+        <div class="grid grid-cols-3">
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+          <input type="checkbox" id="cbox1" /><input type="text" class="rounded-md bg-red-300 ring-1 shadow-sm w-40"/>  <br>
+        </div>
       </div>
     </div>
   </div>
-<button class="rounded-xl bg-red-200 p-4 items-center">POMODORO</button>
+  <button  class="rounded-xl bg-red-200 p-4 items-center" >POMODORO</button>
+  <script src="js/poe.js"></script>
 </body>
 
 </html>
