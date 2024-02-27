@@ -47,7 +47,7 @@ const escribir = (texto, nombreArchivo) => {
 };
 
 const textoAEscribir = 'Ya se me olvido como hacer un merge y ahora tengo que arreglar mi repo';
-escribir(textoAEscribir, 'miArchivo.txt');
+escribir(textoAEscribir, 'miarchivo.txt');
 
 const tropas = [{
     clase: "barbaro", 
@@ -67,6 +67,7 @@ const tropas = [{
 
 let html_tropas = ' ';
 
+const { Hmac } = require('crypto');
 const http = require('http');
 
 const server = http.createServer( (request, response) => {
