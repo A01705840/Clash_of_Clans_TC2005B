@@ -1,0 +1,25 @@
+{
+  "name": "tc2005b_maria-soto",
+  "version": "1.0.0",
+  "description": "proyecto-express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A01705840/TC2005B_Maria-Soto.git"
+  },
+  "keywords": [
+    "otoperro1"
+  ],
+  "author": "MajoSoto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/A01705840/TC2005B_Maria-Soto/issues"
+  },
+  "homepage": "https://github.com/A01705840/TC2005B_Maria-Soto#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
