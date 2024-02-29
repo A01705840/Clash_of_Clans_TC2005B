@@ -89,6 +89,35 @@ const libros = [{
 const express = require('express');
 const app = express();
 
+//Construir pagina principal de libros
+app.get('/', (request, response) => {
+    let html = html_header;
+    for (let libro of libros) {
+        html += 
+        `<html>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <head>
+          <meta charset="utf-8">
+          <title>Lab 10</title>
+        </head>
+        
+        <body>
+          <h1 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl ">Libros</h1>
+          <ul  class="flex justify-center">
+            <li class="py-3 px-5 bg-slate-200 text-white-400 ring-2 ring-black justify-center"> 
+            <div>
+            ${libro.nombre}
+            <br></br>
+            <img src="${libro.imagen}" alt="The Left Hand of Darkness" class=" w-fit h-fit">
+            </div>
+            </li>
+            </ul>
+        </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+      </html>`;
+    }
+    html += html_footer;
+    response.send(html);
+});
 //Middleware
 app.use((request, response, next) => {
     console.log('Middleware!');
