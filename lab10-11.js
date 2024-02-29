@@ -90,6 +90,38 @@ const express = require('express');
 const app = express();
 
 //Construir pagina principal de libros
+app.get('/Add', (request, response) => {
+    let html = html_header;
+    html +=
+        `
+        <script src="https://cdn.tailwindcss.com"></script>
+          <head>
+            <title>Nuevo Libro</title>
+            <h1 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl ">Nuevo Libro</h1>
+        </head>
+        <meta charset="utf-8">
+        <form action="/Add" method="POST" class="flex flex-col px-10">
+          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="nombre">Nombre</label>
+          <input type="text" class="" id="nombre" name="nombre">
+          <br><br>
+          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="autor">Autor</label>
+          <input type="text" class="" id="autor" name="autor">
+          <br><br>
+          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="rating">Rating</label>
+          <input type="text" type="number" value="0000" class="" id="rating" name="rating">
+          <br><br>
+          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="fecha">Fecha</label>
+          <input type="text" class="" id="fecha" name="fecha">
+          <br><br>
+          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="imagen">Imagen</label>
+          <input type="text" class="" id="imagen" name="imagen">
+          <br><br>
+          <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Crear" href="/">
+        </form>`;
+    html += html_footer;
+    response.send(html);
+});
+
 app.get('/', (request, response) => {
     let html = html_header;
     for (let libro of libros) {
@@ -108,7 +140,7 @@ app.get('/', (request, response) => {
             <div>
             ${libro.nombre}
             <br></br>
-            <img src="${libro.imagen}" alt="The Left Hand of Darkness" class=" w-fit h-fit">
+            <img src="${libro.imagen}" alt="Libro" class=" w-fit h-fit">
             </div>
             </li>
             </ul>
@@ -134,36 +166,7 @@ app.use((request, response, next) => {
 const server = http.createServer( (request, response) => {
     console.log(request.url);
 
-    if(request.url == "/"){
-        response.setHeader('Content-Type', 'text/html');
-        response.write(html_header);
-        let html_libros = '';
-        // Aqui se imprimer los libros
-        for (let libro of libros) {
-            html_libros += `<html>
-            <script src="https://cdn.tailwindcss.com"></script>
-            <head>
-              <meta charset="utf-8">
-              <title>Lab 10</title>
-            </head>
-            
-            <body>
-              <h1 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl ">Libros</h1>
-              <ul  class="flex justify-center">
-                <li class="py-3 px-5 bg-slate-200 text-white-400 ring-2 ring-black justify-center"> 
-                <div>
-                ${libro.nombre}
-                <br></br>
-                <img src="${libro.imagen}" alt="The Left Hand of Darkness" class=" w-fit h-fit">
-                </div>
-                </li>
-                </ul>
-            </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-          </html>`;
-        }
-        response.write(html_libros);
-        response.end();
-    } else if (request.url == "/Add" && request.method == "GET") {
+    else if (request.url == "/Add" && request.method == "GET") {
         response.setHeader('Content-Type', 'text/html');
         response.write(html_header);
         response.write(
@@ -175,25 +178,7 @@ const server = http.createServer( (request, response) => {
             </head>
         `);
         response.write(`
-        <meta charset="utf-8">
-        <form action="/Add" method="POST" class="flex flex-col px-10">
-          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="nombre">Nombre</label>
-          <input type="text" class="" id="nombre" name="nombre">
-          <br><br>
-          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="autor">Autor</label>
-          <input type="text" class="" id="autor" name="autor">
-          <br><br>
-          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="rating">Rating</label>
-          <input type="text" type="number" value="0000" class="" id="rating" name="rating">
-          <br><br>
-          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="fecha">Fecha</label>
-          <input type="text" class="" id="fecha" name="fecha">
-          <br><br>
-          <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="imagen">Imagen</label>
-          <input type="text" class="" id="imagen" name="imagen">
-          <br><br>
-          <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Crear" href="/">
-        </form>`);
+        `);
         response.write(html_footer);
         response.end();
 
