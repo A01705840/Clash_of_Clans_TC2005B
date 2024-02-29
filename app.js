@@ -49,25 +49,8 @@ const escribir = (texto, nombreArchivo) => {
 const textoAEscribir = 'Ya se me olvido como hacer un merge y ahora tengo que arreglar mi repo';
 escribir(textoAEscribir, 'miarchivo.txt');
 
-const tropas = [{
-    clase: "barbaro", 
-    nivel: 1, 
-    vida: 100, 
-    ataque: 10, 
-    imagen: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com.mx%2Fpin%2F547257792230252097%2F&psig=AOvVaw1Jm1nTfJUgnaGIycZLoLw7&ust=1709058236470000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNj3xpvQyYQDFQAAAAAdAAAAABAE"
-    },
-    {
-    clase: "arquera", 
-    nivel: 1, 
-    vida: 50, 
-    ataque: 20,
-    imagen: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tokyvideo.com%2Fes%2Fvideo%2Fel-gato-portero&psig=AOvVaw3gtB_82JcGzRCscNvF_Rfa&ust=1709058083313000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCODExdLPyYQDFQAAAAAdAAAAABAJ"
-    }
-];
-
 let html_tropas = ' ';
 
-const { Hmac } = require('crypto');
 const http = require('http');
 
 const server = http.createServer( (request, response) => {
@@ -172,17 +155,9 @@ const server = http.createServer( (request, response) => {
         </body>
         
         </html>`);
-        for (let tropa of tropas) {
-        html_tropas += 
-        `<div class="tropa">
-            <h2>${tropa.clase}</h2>
-            <p>Nivel: ${tropa.nivel}</p>
-            <p>Vida: ${tropa.vida}</p>
-            <p>Ataque: ${tropa.ataque}</p>
-            <img src="${tropa.imagen}" alt="${tropa.clase}" />
-        </div>`;
+
         response.end();}
-    } else if (request.url == "/crear"){  
+     else if (request.url == "/crear"){  
         response.write(html_header);
         response.write("</head><body><h2>Este es un servidor web</h2></body></html>");
         response.end();
