@@ -89,6 +89,9 @@ const libros = [{
 const express = require('express');
 const app = express();
 
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended: false}));
 //Construir pagina principal de libros
 app.get('/Add', (request, response) => {
     let html = html_header;
@@ -120,6 +123,18 @@ app.get('/Add', (request, response) => {
         </form>`;
     html += html_footer;
     response.send(html);
+});
+
+app.post('/Add', (request, response) => {
+    console.log(request.body);
+    libros.push({
+        nombre: request.body.nombre,
+        autor: request.body.autor,
+        rating: request.body.rating,
+        fecha: request.body.fecha,
+        imagen: request.body.imagen
+    });
+    response.redirect('/');
 });
 
 app.get('/', (request, response) => {
