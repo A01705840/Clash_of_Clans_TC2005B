@@ -95,8 +95,11 @@ app.use((request, response, next) => {
     next(); //Le permite a la petición avanzar hacia el siguiente middleware
   });
   app.use((request, response, next) => {
-    console.log('Otro middleware!');
-    response.send('¡Hola mundo!'); //Manda la respuesta
+    response.status(404);
+    let html = html_header;
+    html += `<h1 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl ">Error 404</h1>`;
+    html += html_footer;
+    response.send(html); //Manda la respuesta
   });
 /*
 const server = http.createServer( (request, response) => {
@@ -201,6 +204,4 @@ const server = http.createServer( (request, response) => {
     }
 });
 */
-app.listen(3000, '127.0.0.1', () => {
-    console.log('Server running...');
-});
+app.listen(3000);
