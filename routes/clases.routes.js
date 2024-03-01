@@ -138,16 +138,6 @@ router.get('/', (request, response) => {
     html += html_footer;
     response.send(html);
 });
-//Middleware
-router.use((request, response, next) => {
-    console.log('Middleware!');
-    next(); //Le permite a la petición avanzar hacia el siguiente middleware
-  });
-  router.use((request, response, next) => {
-    response.status(404);
-    let html = html_header;
-    html += `<h1 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl ">Error 404</h1>`;
-    html += html_footer;
-    response.send(html); //Manda la respuesta
-  });
+
+//Exportar módulos
 module.exports = router;
