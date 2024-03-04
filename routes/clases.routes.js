@@ -89,3 +89,12 @@ router.get('/', (request, response, next) => {
 
 //Exportar módulos
 module.exports = router;
+
+//¿Qué otros templating engines existen para node?
+/*Algunos de los más populares son:
+- EJS
+- Pug
+- Handlebars
+- Mustache
+- Nunjucks
+*/
