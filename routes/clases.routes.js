@@ -64,8 +64,8 @@ const libros = [{
 ];
 
 //Página nuevo libro cargar página
-router.get('/Add', (request, response) => {
-    let html = html_header;
+router.get('/Add', (request, response, next) => {
+    /*let html = html_header;
     html +=
         `
         <script src="https://cdn.tailwindcss.com"></script>
@@ -93,7 +93,8 @@ router.get('/Add', (request, response) => {
           <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Crear" href="/">
         </form>`;
     html += html_footer;
-    response.send(html);
+    response.send(html);*/
+    response.render('crear');
 });
 
 //Página nuevo libro mandar formulario
