@@ -1,0 +1,23 @@
+<%- include('includes/head.ejs') %>
+
+<% for (let libro of libros) { %>
+    <html>
+        <script src="https://cdn.tailwindcss.com"></script>
+        
+        <body>
+          <h1 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl ">Libros</h1>
+          <ul  class="flex justify-center">
+            <li class="py-3 px-5 bg-slate-200 text-white-400 ring-2 ring-black justify-center"> 
+            <div>
+            <%= libro.nombre %>
+            <br></br>
+            <img src= "<%=libro.imagen %>" alt="Libro" class=" w-fit h-fit">
+            </div>
+            </li>
+            </ul>
+        </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    </html>
+
+<% } %>
+
+<%- include('includes/foot.ejs') %>

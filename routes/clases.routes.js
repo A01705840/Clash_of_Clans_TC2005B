@@ -2,36 +2,6 @@ const express = require('express');
 
 const router = express.Router();
 
-//Construir estructura principal de libros
-const html_header = 
-    `<!DOCTYPE html>
-    <html>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <head>
-        <meta charset="UTF-8">
-        <titleMi Librería</title>
-    </head>
-    <body class="font-sans">
-        <nav class=" bg-purple-300 p-4">
-            <div class="container mx-auto flex justify-between items-center">
-                <!-- Brand/logo -->
-                <a href="#" class=" text-slate-900 font-semibold text-2xl">Lab 10</a>
-
-                <!-- Navbar links -->
-                <div class="space-x-4">
-                    <a href="/" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Home</a>
-                    <a href="/Add" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Add</a>
-                    <a href="#" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Services</a>
-                    <a href="#" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Contact</a>
-                </div>
-            </div>
-        </nav>
-
-    </body>
-    </html>`;
-const html_footer =
-    `<footer class="bg-purple-300 p-4"></footer>`;
-
     //Crear un registro de libros
 const libros = [{
     nombre: "The Left Hand of Darkness", 
@@ -98,7 +68,7 @@ router.get('/Add', (request, response, next) => {
 });
 
 //Página nuevo libro mandar formulario
-router.post('/Add', (request, response) => {
+router.post('/Add', (request, response, next) => {
     console.log(request.body);
     libros.push({
         nombre: request.body.nombre,
@@ -111,33 +81,10 @@ router.post('/Add', (request, response) => {
 });
 
 //Página Principal
-router.get('/', (request, response) => {
-    let html = html_header;
-    for (let libro of libros) {
-        html += 
-        `<html>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <head>
-          <meta charset="utf-8">
-          <title>Lab 10</title>
-        </head>
-        
-        <body>
-          <h1 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl ">Libros</h1>
-          <ul  class="flex justify-center">
-            <li class="py-3 px-5 bg-slate-200 text-white-400 ring-2 ring-black justify-center"> 
-            <div>
-            ${libro.nombre}
-            <br></br>
-            <img src="${libro.imagen}" alt="Libro" class=" w-fit h-fit">
-            </div>
-            </li>
-            </ul>
-        </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-      </html>`;
-    }
-    html += html_footer;
-    response.send(html);
+router.get('/', (request, response, next) => {
+    response.render('clases', {
+        libros: libros
+    });
 });
 
 //Exportar módulos
