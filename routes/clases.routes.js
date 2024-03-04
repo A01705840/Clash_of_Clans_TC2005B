@@ -68,17 +68,18 @@ router.get('/Add', (request, response, next) => {
 });
 
 //Página nuevo libro mandar formulario
-router.post('/Add', (request, response, next) => {
-    console.log(request.body);
-    libros.push({
-        nombre: request.body.nombre,
-        autor: request.body.autor,
-        rating: request.body.rating,
-        fecha: request.body.fecha,
-        imagen: request.body.imagen
-    });
-    response.redirect('/');
-});
+router.post('/Add', librosController.get_crear);
+//(request, response, next) => {
+//     console.log(request.body);
+//     libros.push({
+//         nombre: request.body.nombre,
+//         autor: request.body.autor,
+//         rating: request.body.rating,
+//         fecha: request.body.fecha,
+//         imagen: request.body.imagen
+//     });
+//     response.redirect('/');
+// });
 
 //Página Principal
 router.get('/', (request, response, next) => {
