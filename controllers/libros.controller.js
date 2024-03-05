@@ -1,7 +1,9 @@
 const Libro = require('../models/libros.model');
 
 exports.get_crear = (request, response, next) => {
-    response.render('crear');
+    response.render('crear', {
+        username: request.session.username || '',
+    });
 };
 
 exports.post_crear = (request, response, next) => {
@@ -12,11 +14,18 @@ exports.post_crear = (request, response, next) => {
          request.body.rating,
          request.body.fecha,
          request.body.imagen
-     );
-     mis_libros.save();
-     response.redirect('/');
+    );
+    mis_libros.save();
+    response.setHeader('Set-Cookie', 'ultimo_libro='+ mis_libros.nombre + '; HttpOnly');
+    response.redirect('/');
 };
 
 exports.get_root = (request, response, next) => {
-    response.render('clases', {libros: Libro.fetchAll(),});
+    console.log(request.cookies);
+    console.log(request.cookies.ultimo_libro || '');
+    response.render('clases', {
+        libros: Libro.fetchAll(),
+        ultimo_libro: request.cookies.ultimo_libro || '',
+        username: request.session.username || '',
+    });
 };

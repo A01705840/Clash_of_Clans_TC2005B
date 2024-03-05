@@ -1,4 +1,4 @@
-<%- include('includes/head.ejs') %>
+<%- include('includes/head.ejs', {username: username}) %>
 
 <% for (let libro of libros) { %>
     <html>
@@ -16,8 +16,12 @@
             </li>
             </ul>
         </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        <div>
+            <% } %>
+            <% if (ultimo_libro != '') { %>
+                <p>El último libro fue: <%= ultimo_libro %></p>
+                <% } %>
+                
+            </div>
+            <%- include('includes/foot.ejs') %>
     </html>
-
-<% } %>
-
-<%- include('includes/foot.ejs') %>
