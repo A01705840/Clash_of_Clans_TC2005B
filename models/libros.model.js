@@ -54,5 +54,4 @@ module.exports = class Libro {
     static fetchAll() {
         return libros;
     }
-    
 }
