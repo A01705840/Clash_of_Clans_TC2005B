@@ -40,6 +40,7 @@ module.exports = class Libro {
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
+
     save() {
     libros.push({
         nombre: this.nombre,
@@ -48,6 +49,7 @@ module.exports = class Libro {
         fecha: this.fecha,
         imagen: this.imagen
         }); //Esta es la manera larga
+        
     //libros.push(this); //Agrega este objeto a la lista de libros
     }
 //Métodos estáticos se ejecutan sobre la clase. No necesitan una instancia de la clase para ser ejecutados
