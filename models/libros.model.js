@@ -1,4 +1,4 @@
-
+/*
 const libros = [{
     nombre: "The Left Hand of Darkness", 
     autor: "Ursula K. Le Guin", 
@@ -9,7 +9,7 @@ const libros = [{
     {
     nombre: "I Have No Mouth, and I Must Scream", 
     autor: "Harlan Ellison", 
-    rsting: 90, 
+    rating: 90, 
     fecha: 1967,
     imagen: 'https://i.pinimg.com/564x/01/7f/3d/017f3d4c4ee8ead03008a31dbdc71cbe.jpg'
     }, 
@@ -27,7 +27,9 @@ const libros = [{
     fecha: 1886,
     imagen: 'https://i.pinimg.com/564x/62/d8/b1/62d8b1eeed930d7336965b5ad66cf898.jpg'
     }
-];
+]; */
+
+const db = require('../util/database');
 
 module.exports = class Libro {
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo

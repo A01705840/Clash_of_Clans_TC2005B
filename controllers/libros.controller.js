@@ -23,9 +23,15 @@ exports.post_crear = (request, response, next) => {
 exports.get_root = (request, response, next) => {
     console.log(request.cookies);
     console.log(request.cookies.ultimo_libro || '');
-    response.render('clases', {
-        libros: Libro.fetchAll(),
-        ultimo_libro: request.cookies.ultimo_libro || '',
-        username: request.session.username || '',
+    Libro.fetchAll().then(([rows, fieldData]) => {
+        console.log(fieldData) 
+        response.render('clases', {
+            libros: rows,
+            ultimo_libro: request.cookies.ultimo_libro || '',
+            username: request.session.username || '',
+        });
+    })
+    .catch((error) => {
+       console.log(error);
     });
 };
