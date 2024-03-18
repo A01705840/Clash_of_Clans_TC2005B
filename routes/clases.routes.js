@@ -5,10 +5,10 @@ const librosController = require('../controllers/libros.controller');
 
 
 //Página nuevo libro cargar página
-router.get('/add', librosController.get_crear);
+router.get('/libro/add', librosController.get_crear);
 
 //Página nuevo libro mandar formulario
-router.post('/add', librosController.post_crear);
+router.post('/libro/add', librosController.post_crear);
 
 router.get('/:libro_id', librosController.get_root);
 //Página Principal

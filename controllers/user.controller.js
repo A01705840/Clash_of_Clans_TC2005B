@@ -1,3 +1,5 @@
+const Usuario = require('../models/user.model');
+
 exports.get_login = (request, response, next) => {
     response.render('login', {
         username: request.session.username || '',
