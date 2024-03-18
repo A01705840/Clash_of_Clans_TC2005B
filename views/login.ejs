@@ -1,13 +1,17 @@
 <%- include('includes/head.ejs', {username: username}) %>
 <script src="https://cdn.tailwindcss.com"></script>
-<h2 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl">Bienvenido </h2>
-<form action="/users/login" method="POST" class="flex flex-col px-10">
+<h2 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl"><% if (registro) {%> ¡Únete al Club! <% }else { %>  Bienvenido <% } %> </h2>
+<form action="/users/<% if (registro) { %>signup<% } else { %>login<% } %>" method="POST" class="flex flex-col px-10">
+    <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="username">Nombre</label>
     <input type="text" class="" id="username" name="username">
-    <br><br>
+    <% if (registro) { %>
+        <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="name">Nombre completo</label>
+        <input class="" id="name" name="name">
+    <% } %>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="password">Password</label>
     <input type="password" class="" id="password" name="password">
     <br><br>
-    <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Entrar">
+    <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="<% if (registro) { %>¡Unirme!<% } else { %>Entrar<% } %>">
 </form>
 <%- include('includes/foot.ejs') %>

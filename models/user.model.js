@@ -8,10 +8,16 @@ module.exports = class Usuario {
     }
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute(
+        return bcrypt.hash(this.password, 12)
+        .then((password_cifrado) => {
+            return db.execute(
             `INSERT INTO usuario (username, nombre, password) 
             VALUES (?, ?, ?)`, 
-            [this.username, this.nombre, this.password]);
+            [this.username, this.nombre, password_cifrado]);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
     static fetchOne(username) {
         return db.execute('Select * from usuario WHERE username = ?', [username]);
