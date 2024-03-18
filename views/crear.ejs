@@ -1,7 +1,7 @@
 <%- include('includes/head.ejs', {username: username}) %>
 <script src="https://cdn.tailwindcss.com"></script>
 <h2 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl">Crear un nuevo libro </h2>
-<form action="/add" method="POST" class="flex flex-col px-10">
+<form action="/libro/add" method="POST" class="flex flex-col px-10">
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="nombre">Nombre</label>
     <input type="text" class="" id="nombre" name="nombre">
     <br><br>

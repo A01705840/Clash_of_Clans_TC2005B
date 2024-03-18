@@ -10,6 +10,7 @@ router.get('/add', librosController.get_crear);
 //Página nuevo libro mandar formulario
 router.post('/add', librosController.post_crear);
 
+router.get('/:libro_id', librosController.get_root);
 //Página Principal
 router.get('/', librosController.get_root);
 

@@ -29,7 +29,7 @@ const rutasUsuarios = require('./routes/user.routes');
 app.use('/users', rutasUsuarios);
 
 const rutasClases = require('./routes/clases.routes');
-app.use('/', rutasClases);
+app.use('/libro', rutasClases);
 
 app.use((request, response, next) => {
   response.status(404);

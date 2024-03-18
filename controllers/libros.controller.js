@@ -17,14 +17,15 @@ exports.post_crear = (request, response, next) => {
     );
     mis_libros.save();
     response.setHeader('Set-Cookie', 'ultimo_libro='+ mis_libros.nombre + '; HttpOnly');
-    response.redirect('/');
+    response.redirect('/libro');
 };
 
 exports.get_root = (request, response, next) => {
     console.log(request.cookies);
     console.log(request.cookies.ultimo_libro || '');
     Libro.fetchAll().then(([rows, fieldData]) => {
-        console.log(fieldData) 
+        console.log(fieldData);
+        console.log(rows); 
         response.render('clases', {
             libros: rows,
             ultimo_libro: request.cookies.ultimo_libro || '',

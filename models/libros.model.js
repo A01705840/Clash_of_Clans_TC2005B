@@ -16,18 +16,23 @@ module.exports = class Libro {
         return db.execute(
             `INSERT INTO libro (nombre, autor, rating, fecha, img) 
             VALUES (?, ?, ?, ?, ?)`, 
-            [this.nombre, this.autor, this.rating, this.fecha, this.img]); //Esta es la manera larga
+            [this.nombre, this.autor, this.rating, this.fecha, this.imagen]); //Esta es la manera larga
         
     //libros.push(this); //Agrega este objeto a la lista de libros
     }
 //Métodos estáticos se ejecutan sobre la clase. No necesitan una instancia de la clase para ser ejecutados
     static fetchAll() {
         return db.execute('SELECT * FROM libro')
-            .then(([rows, fieldData]) => {
-                console.log(fieldData);
-                console.log(rows);
-            })
-            .catch((error) => {
-                console.log(error)});
+    }
+    
+    static fetch(id) {
+        if (id) {
+            return this.fetchOne(id);
+        } else {
+            return this.fetchAll();
+        }
+    }
+    static fetchOne(id) {
+        return db.execute('Select * from tropa WHERE id = ?', [id]);
     }
 }
