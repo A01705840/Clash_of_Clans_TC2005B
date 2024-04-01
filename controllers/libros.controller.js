@@ -3,6 +3,7 @@ const Libro = require('../models/libros.model');
 exports.get_crear = (request, response, next) => {
     response.render('crear', {
         username: request.session.username || '',
+        csrfToken: request.csrfToken(),
     });
 };
 
