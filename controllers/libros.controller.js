@@ -9,12 +9,13 @@ exports.get_crear = (request, response, next) => {
 
 exports.post_crear = (request, response, next) => {
     console.log(request.body);
+    console.log(request.file);
      const mis_libros = new Libro (
          request.body.nombre,
          request.body.autor,
          request.body.rating,
          request.body.fecha,
-         request.body.imagen
+         request.file.filename
     );
     mis_libros.save();
     response.setHeader('Set-Cookie', 'ultimo_libro='+ mis_libros.nombre + '; HttpOnly');

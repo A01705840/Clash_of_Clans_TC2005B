@@ -33,6 +33,6 @@ module.exports = class Libro {
         }
     }
     static fetchOne(id) {
-        return db.execute('Select * from tropa WHERE id = ?', [id]);
+        return db.execute('Select * from libro WHERE id = ?', [id]);
     }
 }
