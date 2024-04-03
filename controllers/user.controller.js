@@ -55,11 +55,14 @@ exports.get_logout = (request, response, next) => {
 };
 
 exports.get_signup = (request, response, next) => {
+    const error = request.session.error || '';
+    request.session.error = '';
     response.render('login', {
         username: request.session.username || '',
         registro: true,
         csrfToken: request.csrfToken(),
         permisos: request.session.permisos || [],
+        error: error,
     });
 
 };
@@ -73,5 +76,7 @@ exports.post_signup = (request, response, next) => {
         })
         .catch((error) => {
             console.log(error);
+            request.sesion.error = 'Nombre de usuario ya existe';
+            response.redirect('/users/signup');
         });
 };
