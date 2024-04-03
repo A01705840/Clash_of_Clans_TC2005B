@@ -1,20 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const isAuth = require('../util/is-auth');
-
+const canView = require('../util/canView');
+const canCreate = require('../util/canCreate');
 
 const librosController = require('../controllers/libros.controller');
 
 
 //Página nuevo libro cargar página
-router.get('/libro/add', isAuth,  librosController.get_crear);
+router.get('/libro/add', isAuth, canCreate, librosController.get_crear);
 
 //Página nuevo libro mandar formulario
-router.post('/libro/add', isAuth,  librosController.post_crear);
+router.post('/libro/add', isAuth, canCreate, librosController.post_crear);
 
-router.get('/:libro_id', isAuth, librosController.get_root);
+router.get('/:libro_id', isAuth, canView, librosController.get_root);
 //Página Principal
-router.get('/', isAuth, librosController.get_root);
+router.get('/', isAuth, canView, librosController.get_root);
 
 //Exportar módulos
 module.exports = router;
