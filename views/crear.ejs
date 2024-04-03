@@ -1,4 +1,7 @@
-<%- include('includes/head.ejs', {username: username}) %>
+<%- include('includes/head.ejs', {
+    username: username,
+    permisos: permisos,
+}) %>
 <script src="https://cdn.tailwindcss.com"></script>
 <h2 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl">Crear un nuevo libro </h2>
 <form action="/libro/add" method="POST" class="flex flex-col px-10" enctype="multipart/form-data">

@@ -4,6 +4,7 @@ exports.get_crear = (request, response, next) => {
     response.render('crear', {
         username: request.session.username || '',
         csrfToken: request.csrfToken(),
+        permisos: request.session.permisos || [],
     });
 };
 
@@ -25,13 +26,14 @@ exports.post_crear = (request, response, next) => {
 exports.get_root = (request, response, next) => {
     console.log(request.cookies);
     console.log(request.cookies.ultimo_libro || '');
-    Libro.fetchAll().then(([rows, fieldData]) => {
+    Libro.fetchAll().then(([rows, fieldData]) => { //Preguntar al profe
         console.log(fieldData);
         console.log(rows); 
         response.render('clases', {
             libros: rows,
             ultimo_libro: request.cookies.ultimo_libro || '',
             username: request.session.username || '',
+            permisos: request.session.permisos || [],
         });
     })
     .catch((error) => {

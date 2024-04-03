@@ -7,8 +7,9 @@ exports.get_login = (request, response, next) => {
     response.render('login', {
         username: request.session.username || '',
         registro: false,
-        csrfToken: request.csrfToken,
+        csrfToken: request.csrfToken(),
         error: error,
+        permisos: request.session.permisos || [],
     });
 };
 
@@ -20,9 +21,17 @@ exports.post_login = (request, response, next) => {
                 bcrypt.compare(request.body.password, usuario.password)
                     .then((doMatch) => {
                         if(doMatch) {
-                            request.session.username = usuario.nombre;
-                            request.session.isLoggedIn = true;
-                            response.redirect('/libro');
+                            Usuario.getPermisos(usuario.username)
+                                .then(([permisos, fieldData]) => {
+                                    console.log(permisos);
+                                    request.session.permisos = permisos;
+                                    request.session.username = usuario.nombre;
+                                    request.session.isLoggedIn = true;
+                                    response.redirect('/libros');
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                });
                         } else {
                             request.session.error = "Usuario y/o contraseña incorrectos";
                             response.redirect('/users/login');
@@ -49,7 +58,8 @@ exports.get_signup = (request, response, next) => {
     response.render('login', {
         username: request.session.username || '',
         registro: true,
-        csrfToken: request.csrfToken,
+        csrfToken: request.csrfToken(),
+        permisos: request.session.permisos || [],
     });
 
 };
