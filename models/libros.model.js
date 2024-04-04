@@ -35,4 +35,12 @@ module.exports = class Libro {
     static fetchOne(id) {
         return db.execute('Select * from libro WHERE id = ?', [id]);
     }
+
+    static update(id, nombre, autor, rating, fecha, imagen) {
+        return db.execute(
+            `UPDATE libro SET nombre = ?, autor = ?, rating = ?, fecha = ?, img = ?
+            WHERE id = ?`, 
+            [nombre, autor, rating, fecha, imagen, id]
+        );
+    }
 }

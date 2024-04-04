@@ -3,6 +3,7 @@ const router = express.Router();
 const isAuth = require('../util/is-auth');
 const canView = require('../util/canView');
 const canCreate = require('../util/canCreate');
+const canEdit = require('../util/canEdit');
 
 const librosController = require('../controllers/libros.controller');
 
@@ -12,6 +13,10 @@ router.get('/libro/add', isAuth, canCreate, librosController.get_crear);
 
 //Página nuevo libro mandar formulario
 router.post('/libro/add', isAuth, canCreate, librosController.post_crear);
+
+router.get('/libro/editar/:libro_id', isAuth, canEdit, librosController.get_editar);
+
+router.post('/libro/editar/:libro_id', isAuth, canEdit, librosController.post_editar);
 
 router.get('/:libro_id', isAuth, canView, librosController.get_root);
 //Página Principal

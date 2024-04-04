@@ -3,25 +3,39 @@
     permisos: permisos,
 }) %>
 <script src="https://cdn.tailwindcss.com"></script>
+<% if(editar) { %>
+<h2 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl">Editar libro </h2>
+<% } else { %>
 <h2 class="flex justify-center text-red-950 italic text-3xl py-3 hover:text-red-400 hover:text-4xl">Crear un nuevo libro </h2>
+<% } %>
+
+<% if(editar) { %>
+<form action="/libro/editar" method="POST" class="flex flex-col px-10" enctype="multipart/form-data">
+<% } else { %>
 <form action="/libro/add" method="POST" class="flex flex-col px-10" enctype="multipart/form-data">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+<% } %>
+<input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+
+<% if(editar) { %>
+    <input type="hidden" id="id" name="id" value="<% libro.id %>" >
+<% } %>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="nombre">Nombre</label>
-    <input type="text" class="" id="nombre" name="nombre">
+    <input type="text" class="" id="nombre" name="nombre" value="<% if (editar) { %><%= libro.nombre %><% } %>">
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="autor">Autor</label>
-    <input type="text" class="" id="autor" name="autor">
+    <input type="text" class="" id="autor" name="autor" value="<% if (editar) { %><%= libro.autor %><% } %>">
+    <br><br>
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="rating">Rating</label>
-    <input type="text" type="number" value="0000" class="" id="rating" name="rating">
+    <input type="text" type="number" value="<% if(editar) { %><%= libro.rating %><% } else { %>0<% } %>" class="" id="rating" name="rating">
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="fecha">Fecha</label>
     <input type="text" class="" id="fecha" name="fecha">
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="imagen">Imagen</label>
-    <input type="file" class="" id="imagen" name="imagen">
+    <input type="text" class="" id="imagen" name="imagen" value="<% if(editar) { %><%= tropa.imagen %><% } %>>
     <br><br>
-    <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Crear" href="/">
+    <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Guardar" href="/">
 </form>
     </body>
     <%- include('includes/foot.ejs') %>

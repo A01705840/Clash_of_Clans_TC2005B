@@ -5,6 +5,7 @@ exports.get_crear = (request, response, next) => {
         username: request.session.username || '',
         csrfToken: request.csrfToken(),
         permisos: request.session.permisos || [],
+        editar: false,
     });
 };
 
@@ -40,3 +41,29 @@ exports.get_root = (request, response, next) => {
        console.log(error);
     });
 };
+
+exports.get_editar = (request, response, next) => {
+    Libro.fetchOne(request.params.id)
+    .then(([rows, fieldData]) => {
+        response.render('crear', {
+            username: request.session.username || '',
+            csrfToken: request.csrfToken(),
+            permisos: request.session.permisos || [],
+            editar: true,
+            libro: libros[0],
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+exports.post_editar = (request, response, next) => {
+    Libro.update(request.body.nombre, request.body.autor, request.body.rating, request.body.fecha, request.body.id)
+    .then(([rows, fieldData]) => {
+        response.redirect('/libro');
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}

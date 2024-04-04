@@ -15,6 +15,11 @@
             <%= libro.nombre %>
             <br></br>
             <img src= "public/uploads/<%=libro.imagen %>" alt="Libro" class=" w-fit h-fit">
+            <% for (let permiso of permisos) { %>
+                <% if(permiso.permiso == 'editar_libro') { %>
+                <a href="/libro/editar/<%= libro.id %>" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Editar</a> <br> <br>
+                <% } %>
+            <% } %>
             </div>
             </li>
             </ul>
