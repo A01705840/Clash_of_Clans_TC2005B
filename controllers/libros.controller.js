@@ -1,8 +1,27 @@
 const Libro = require('../models/libros.model');
 
+exports.get_root = (request, response, next) => {
+    console.log(request.cookies);
+    console.log(request.cookies.ultimo_libro || '');
+    Libro.fetchAll().then(([rows, fieldData]) => { //Preguntar al profe
+        response.render('clases', {
+            libros: rows,
+            ultimo_libro: request.cookies.ultimo_libro || '',
+            username: request.session.username || '',
+            permisos: request.session.permisos || [],
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+    console.log(request.session.username || 'hola');
+};
+
 exports.get_crear = (request, response, next) => {
+    console.log(request.session.username || 'hola');
     response.render('crear', {
         username: request.session.username || '',
+        registro: true,
         csrfToken: request.csrfToken(),
         permisos: request.session.permisos || [],
         editar: false,
@@ -19,26 +38,12 @@ exports.post_crear = (request, response, next) => {
          request.body.fecha,
          request.file.filename
     );
-    mis_libros.save();
-    response.setHeader('Set-Cookie', 'ultimo_libro='+ mis_libros.nombre + '; HttpOnly');
-    response.redirect('/libro');
-};
-
-exports.get_root = (request, response, next) => {
-    console.log(request.cookies);
-    console.log(request.cookies.ultimo_libro || '');
-    Libro.fetchAll().then(([rows, fieldData]) => { //Preguntar al profe
-        console.log(fieldData);
-        console.log(rows); 
-        response.render('clases', {
-            libros: rows,
-            ultimo_libro: request.cookies.ultimo_libro || '',
-            username: request.session.username || '',
-            permisos: request.session.permisos || [],
-        });
-    })
-    .catch((error) => {
-       console.log(error);
+    mis_libros.save()
+    .then(([rows, fieldData]) => {
+        response.setHeader('Set-Cookie', 'ultimo_libro='+ mis_libros.nombre + '; HttpOnly');
+        response.redirect('/libro');
+    }).catch((error) => {
+        console.log(error);
     });
 };
 

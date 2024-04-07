@@ -20,12 +20,12 @@ module.exports = class Usuario {
                 );
 
             return db.execute(
-                'INSERT INTO asigna (username, idrol) VALUES (?, 1)', 
+                'INSERT INTO asigna (username, idrol) VALUES (?, 2)', 
                 [this.username]
                 );
             }catch(error) {
                 console.log(error);
-                throw Error('Usario duplicado');
+                throw Error('Usuario duplicado');
             }
         });
     }

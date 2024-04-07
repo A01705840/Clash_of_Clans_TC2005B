@@ -18,9 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 app.use(cookieParser());
-
 
 const multer = require('multer');
 //fileStorage: Es nuestra constante de configuración para manejar el almacenamiento
@@ -32,7 +31,7 @@ const fileStorage = multer.diskStorage({
     filename: (request, file, callback) => {
         //aquí configuramos el nombre que queremos que tenga el archivo en el servidor, 
         //para que no haya problema si se suben 2 archivos con el mismo nombre concatenamos el timestamp
-        callback(null, file. Number(new Date()).toString() + file.originalname);
+        callback(null, file.originalname);
     },
 });
 app.use(multer({ storage: fileStorage }).single('imagen')); 
@@ -42,10 +41,10 @@ const csrf = require('csurf');
 const csrfProtection = csrf();
 app.use(csrfProtection);
 
-app.use((request, response, next) => {
-    response.locals.csrfToken = request.csrfToken();
-    next();
-});
+// app.use((request, response, next) => {
+//     response.locals.csrfToken = request.csrfToken();
+//     next();
+// });
 
 //RUTAS
 const rutasUsuarios = require('./routes/user.routes');

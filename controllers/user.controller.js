@@ -11,6 +11,7 @@ exports.get_login = (request, response, next) => {
         error: error,
         permisos: request.session.permisos || [],
     });
+    console.log(request.session.username || 'hola')
 };
 
 exports.post_login = (request, response, next) => {
@@ -27,7 +28,7 @@ exports.post_login = (request, response, next) => {
                                     request.session.permisos = permisos;
                                     request.session.username = usuario.nombre;
                                     request.session.isLoggedIn = true;
-                                    response.redirect('/libros');
+                                    response.redirect('/libro');
                                 })
                                 .catch((error) => {
                                     console.log(error);
@@ -46,6 +47,7 @@ exports.post_login = (request, response, next) => {
         }
     })
     .catch((error) => {console.log(error);});
+    console.log(request.session.username || 'hola2')
 };
 
 exports.get_logout = (request, response, next) => {
