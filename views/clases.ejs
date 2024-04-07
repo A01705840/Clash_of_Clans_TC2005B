@@ -26,7 +26,7 @@
                     <a href="/libro/editar/<%= libro.id %>" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Editar</a> <br> <br>
                     <% } %>
                 <% } %>
-                <button onclick=`eliminar(${tropa.id})` class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Eliminar</button>
+                <button onclick="eliminar(${libro.id})" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Eliminar</button>
                 </div>
                 </li>
                 </ul>
@@ -80,7 +80,7 @@
                                         </figure>
                                         </div>
                                         <div class="">
-                                        <p class=""><a href="/tropas/${libro.id}">${libro.nombre}</a></p>
+                                        <p class=""><a href="/libro/${libro.id}">${libro.nombre}</a></p>
                                         <p class="">@${libro.nombre} </p>
                                         </div>
                                     </div>
@@ -108,7 +108,7 @@
             document.getElementById('buscar').onkeyup = accion_asincrona;
             const eliminar = (id) => {
     const csrf = document.getElementById('_csrf').value;
-    fetch('/tropas/eliminar', {
+    fetch('/libro/eliminar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -123,9 +123,7 @@
         <div class="columns">
         `;
         
-        let columns = 0;
-        for (let tropa of data.tropas) { 
-            columns++;
+        for (let libro of data.libros) { 
             html += `
             <div class="">
                 <div class="">
@@ -155,18 +153,12 @@
                             <a href="/libro/editar/${libro.id}" class="">Editar</a> <br> <br>
                             <% } %>
                         <% } %>
-                        <button onclick="eliminar(${tropa.id})" class="">Eliminar</button>
+                        <button onclick="eliminar(${libro.id})" class="">Eliminar</button>
                     </div>
                     </div>
                 </div>
             </div>
             `;
-            if (columns % 5 == 0) { 
-                html += `
-                </div>
-                <div class="columns">
-                `;
-            }
         }
     
         html += `</div>`;
@@ -174,7 +166,7 @@
         document.getElementById('notification').innerHTML = `
         <div class="notification is-primary">
             <button class="delete"></button>
-            La tropa fue eliminada.
+            El libro fue eliminado.
         </div>
         `;
     }).catch((error) => console.log(error));

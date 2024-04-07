@@ -29,7 +29,7 @@
     <input type="number" class="" id="fecha" name="fecha" value="<% if(editar) { %><%= libro.fecha %><% } else { %>0000<% } %>">
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="imagen">Imagen</label>
-    <input type="file" class="py-2" id="imagen" name="imagen" value="<% if(editar) { %><%= tropa.imagen %><% } %>">
+    <input type="file" class="py-2" id="imagen" name="imagen" value="<% if(editar) { %><%= libro.imagen %><% } %>">
     <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Guardar" href="/">
 </form>
     </body>

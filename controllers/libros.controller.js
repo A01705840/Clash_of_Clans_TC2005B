@@ -28,6 +28,7 @@ exports.get_crear = (request, response, next) => {
         permisos: request.session.permisos || [],
         editar: false,
     });
+    console.log('get-crear');
 };
 
 exports.post_crear = (request, response, next) => {
@@ -48,6 +49,7 @@ exports.post_crear = (request, response, next) => {
         .catch((error) => {
             console.log(error);
         });
+    console.log('post-crear');
 };
 
 exports.get_editar = (request, response, next) => {
@@ -58,12 +60,13 @@ exports.get_editar = (request, response, next) => {
             csrfToken: request.csrfToken(),
             permisos: request.session.permisos || [],
             editar: true,
-            libro: libros[0],
+            libro: rows[0],
         });
     })
     .catch((error) => {
         console.log(error);
     });
+    console.log('get-editar');
 };
 
 exports.post_editar = (request, response, next) => {
@@ -74,6 +77,7 @@ exports.post_editar = (request, response, next) => {
     .catch((error) => {
         console.log(error);
     });
+    console.log('post-editar');
 }
 
 exports.get_buscar = (request, response, next) => {
@@ -84,9 +88,11 @@ exports.get_buscar = (request, response, next) => {
     .catch((error) => {
         console.log(error);
     });
+    console.log('get-buscar');
 }
 
 exports.post_eliminar = (request, response, next) => {
+    console.log('post-eliminar');
     Libro.delete(request.body.id)
     .then(() => {
         return Libro.fetchAll();
