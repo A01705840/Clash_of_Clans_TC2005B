@@ -51,4 +51,8 @@ module.exports = class Libro {
             [`%${valor_busqueda}%`, `%${valor_busqueda}%`, `%${valor_busqueda}%`, `%${valor_busqueda}%`, `%${valor_busqueda}%`]
         );
     }
+
+    static eliminar(id) {
+        return db.execute('DELETE FROM libro WHERE id = ?', [id]);
+    }
 }

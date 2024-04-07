@@ -10,6 +10,7 @@ exports.get_root = (request, response, next) => {
             ultimo_libro: request.cookies.ultimo_libro || '',
             username: request.session.username || '',
             permisos: request.session.permisos || [],
+            csrfToken: request.csrfToken(),
         });
     })
     .catch((error) => {
@@ -81,6 +82,18 @@ exports.get_buscar = (request, response, next) => {
         return response.status(200).json({libros: libros});
     })
     .catch((error) => {
+        console.log(error);
+    });
+}
+
+exports.post_eliminar = (request, response, next) => {
+    Libro.delete(request.body.id)
+    .then(() => {
+        return Libro.fetchAll();
+
+    }).then(([libros, fieldData]) => {
+        return response.status(200).json({libros: libros});
+    }).catch((error) => {
         console.log(error);
     });
 }
