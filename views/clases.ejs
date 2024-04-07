@@ -4,34 +4,38 @@
 }) %>
 
 <input id="buscar" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="Buscar..."/><br><br>
-<% for (let libro of libros) { %>
-    <html>
-        <script src="https://cdn.tailwindcss.com"></script>
-        
-        <body>
-          <h1 class="flex justify-center text-red-950 italic text-3xl py-3 ">Libros</h1>
-          <ul  class="flex justify-center">
-            <li class="py-3 px-5 bg-slate-200 text-white-400 ring-2 ring-black justify-center"> 
+
+<div id="busqueda_ajax">
+    <% for (let libro of libros) { %>
+        <html>
+            <script src="https://cdn.tailwindcss.com"></script>
+            
+            <body>
+                <h1 class="flex justify-center text-red-950 italic text-3xl py-3 ">Libros</h1>
+                <ul  class="flex justify-center">
+                <li class="py-3 px-5 bg-slate-200 text-white-400 ring-2 ring-black justify-center"> 
+                <div>
+                <%= libro.nombre %>
+                <br></br>
+                <img src= "public/uploads/<%=libro.imagen %>" alt="Libro" class=" w-fit h-fit">
+                <% for (let permiso of permisos) { %>
+                    <% if(permiso.permiso == 'editar_libro') { %>
+                    <a href="/libro/editar/<%= libro.id %>" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Editar</a> <br> <br>
+                    <% } %>
+                <% } %>
+                </div>
+                </li>
+                </ul>
+            </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
             <div>
-            <%= libro.nombre %>
-            <br></br>
-            <img src= "public/uploads/<%=libro.imagen %>" alt="Libro" class=" w-fit h-fit">
-            <% for (let permiso of permisos) { %>
-                <% if(permiso.permiso == 'editar_libro') { %>
-                <a href="/libro/editar/<%= libro.id %>" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Editar</a> <br> <br>
                 <% } %>
-            <% } %>
-            </div>
-            </li>
-            </ul>
-        </body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-        <div>
-            <% } %>
-            <% if (ultimo_libro != '') { %>
-                <p>El último libro fue: <%= ultimo_libro %></p>
+                <% if (ultimo_libro != '') { %>
+                    <p>El último libro fue: <%= ultimo_libro %></p>
                 <% } %>
-                
+                    
             </div>
+
+        </div>
         
         <script>
             const accion_asincrona = () => {
@@ -51,13 +55,63 @@
                     console.log(data);
                     //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
                     //...
-                }).catch((error) => {
-                    console.log(error);
-                });
-            };
+                    let html = '';
+
+                    html += `
+                    <div class =''>`
+                    let columns = 0;
+                    for (let libro of data.libros) {
+                        columns++;
+                        html += `
+                            <div class="">
+                                <div class="">
+                                    <div class="">
+                                    <figure class="">
+                                        <img id="imagen_libro" src="/uploads/${libro.imagen}" alt="Imagen de ${libro.nombre}">
+                                    </figure>
+                                    </div>
+                                    <div class="">
+                                    <div class="">
+                                        <div class="">
+                                        <figure class="">
+                                            <img src="/uploads/${libro.imagen}" alt="Imagen de ${libro.nombre}">
+                                        </figure>
+                                        </div>
+                                        <div class="">
+                                        <p class=""><a href="/tropas/${libro.id}">${libro.nombre}</a></p>
+                                        <p class="">@${libro.nombre} </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        Fecha: <span id="fecha_libro">${libro.fecha}</span> <br>
+                                        Rating: <span id="rating_libro">${libro.rating}</span> <br> <br>
+                                        <% for (let permiso of permisos) { %>
+                                            <% if(permiso.permiso == 'editar_libro') { %>
+                                            <a href="/libro/editar/${libro.id}" class="">Editar</a> <br> <br>
+                                            <% } %>
+                                        <% } %>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+
+                            if (columns % 5 == 0) { 
+                                html += `
+                                </div>
+                                <div class="">
+                                `;
+                            }
+                        }   
+                        html += `</div>`;
+                        document.getElementById('busqueda_ajax').innerHTML = html;
+                    }).catch((error) => {
+                                    console.log(error);
+                                });
+                            };
 
             document.getElementById('buscar').onkeyup = accion_asincrona;
-            
+
         </script>
             <%- include('includes/foot.ejs') %>
     </html>
