@@ -76,7 +76,7 @@ exports.post_editar = (request, response, next) => {
 }
 
 exports.get_buscar = (request, response, next) => {
-    Libro.search(request.params.valor_busqueda)
+    Libro.search(request.params.valor_busqueda || '')
     .then(([libros, fieldData]) => {
         return response.status(200).json({libros: libros});
     })

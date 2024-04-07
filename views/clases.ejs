@@ -59,9 +59,7 @@
 
                     html += `
                     <div class =''>`
-                    let columns = 0;
                     for (let libro of data.libros) {
-                        columns++;
                         html += `
                             <div class="">
                                 <div class="">
@@ -95,13 +93,6 @@
                                 </div>
                             </div>
                             `;
-
-                            if (columns % 5 == 0) { 
-                                html += `
-                                </div>
-                                <div class="">
-                                `;
-                            }
                         }   
                         html += `</div>`;
                         document.getElementById('busqueda_ajax').innerHTML = html;
