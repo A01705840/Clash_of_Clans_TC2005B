@@ -44,4 +44,11 @@ module.exports = class Libro {
             [nombre, autor, rating, fecha, imagen, id]
         );
     }
+
+    static search(valor_busqueda) {
+        return db.execute(
+            `SELECT * FROM libro WHERE nombre LIKE ? OR autor LIKE ? OR rating LIKE ? OR fecha LIKE ? OR img LIKE ?`,
+            [`%${valor_busqueda}%`, `%${valor_busqueda}%`, `%${valor_busqueda}%`, `%${valor_busqueda}%`, `%${valor_busqueda}%`]
+        );
+    }
 }

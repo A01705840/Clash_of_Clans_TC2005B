@@ -22,6 +22,8 @@ router.get('/:id', isAuth, canView, librosController.get_root);
 //Página Principal
 router.get('/', isAuth, canView, librosController.get_root);
 
+router.get('/buscar/:valor_busqueda', isAuth, canView, librosController.get_buscar);
+
 //Exportar módulos
 module.exports = router;
 

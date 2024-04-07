@@ -1,3 +1,4 @@
+const { request } = require('express');
 const Libro = require('../models/libros.model');
 
 exports.get_root = (request, response, next) => {
@@ -68,6 +69,16 @@ exports.post_editar = (request, response, next) => {
     Libro.update(request.body.nombre, request.body.autor, request.body.rating, request.body.fecha, request.body.id)
     .then(([rows, fieldData]) => {
         response.redirect('/libro');
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+
+exports.get_buscar = (request, response, next) => {
+    Libro.search(request.params.valor_busqueda)
+    .then(([libros, fieldData]) => {
+        return response.status(200).json({libros: libros});
     })
     .catch((error) => {
         console.log(error);

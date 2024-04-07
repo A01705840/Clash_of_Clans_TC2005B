@@ -3,6 +3,7 @@
     permisos: permisos,
 }) %>
 
+<input id="buscar" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="Buscar..."/><br><br>
 <% for (let libro of libros) { %>
     <html>
         <script src="https://cdn.tailwindcss.com"></script>
@@ -31,5 +32,32 @@
                 <% } %>
                 
             </div>
+        
+        <script>
+            const accion_asincrona = () => {
+                const valor_busqueda = document.getElementById('buscar').value;
+                console.log("buscando..." + valor_busqueda);
+
+                //función que manda petición asíncrona al servidor
+                fetch('/libro/buscar' + valor_busqueda, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then((result) => {
+                    console.log(result);
+                    return result.json(); //Regresa otra promesa
+                }).then((data) => {
+                    console.log(data);
+                    //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                    //...
+                }).catch((error) => {
+                    console.log(error);
+                });
+            };
+
+            document.getElementById('buscar').onkeyup = accion_asincrona;
+            
+        </script>
             <%- include('includes/foot.ejs') %>
     </html>
