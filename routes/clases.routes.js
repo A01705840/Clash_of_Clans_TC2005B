@@ -9,14 +9,14 @@ const librosController = require('../controllers/libros.controller');
 
 
 //Página nuevo libro cargar página
-router.get('/libro/add', isAuth, canCreate, librosController.get_crear);
+router.get('/add', isAuth, canCreate, librosController.get_crear);
 
 //Página nuevo libro mandar formulario
-router.post('/libro/add', isAuth, canCreate, librosController.post_crear);
+router.post('/add', isAuth, canCreate, librosController.post_crear);
 
-router.get('/libro/editar/:id', isAuth, canEdit, librosController.get_editar);
+router.get('/editar/:id', isAuth, canEdit, librosController.get_editar);
 
-router.post('/libro/editar/:id', isAuth, canEdit, librosController.post_editar);
+router.post('/editar/:id', isAuth, canEdit, librosController.post_editar);
 
 router.get('/:id', isAuth, canView, librosController.get_root);
 //Página Principal

@@ -18,7 +18,7 @@ exports.get_root = (request, response, next) => {
 };
 
 exports.get_crear = (request, response, next) => {
-    console.log(request.session.username || 'hola');
+    console.log('hola');
     response.render('crear', {
         username: request.session.username || '',
         registro: true,
@@ -31,20 +31,21 @@ exports.get_crear = (request, response, next) => {
 exports.post_crear = (request, response, next) => {
     console.log(request.body);
     console.log(request.file);
-     const mis_libros = new Libro (
-         request.body.nombre,
-         request.body.autor,
-         request.body.rating,
-         request.body.fecha,
-         request.file.filename
+    const mis_libros = new Libro (
+        request.body.nombre,
+        request.body.autor,
+        request.body.rating,
+        request.body.fecha,
+        request.file.filename
     );
     mis_libros.save()
-    .then(([rows, fieldData]) => {
-        response.setHeader('Set-Cookie', 'ultimo_libro='+ mis_libros.nombre + '; HttpOnly');
-        response.redirect('/libro');
-    }).catch((error) => {
-        console.log(error);
-    });
+         .then(([rows, fieldData]) => {
+             response.setHeader('Set-Cookie', 'ultimo_libro='+ mis_libros.nombre + '; HttpOnly');
+             response.redirect('/libro');
+         })
+        .catch((error) => {
+            console.log(error);
+        });
 };
 
 exports.get_editar = (request, response, next) => {

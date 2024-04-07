@@ -13,23 +13,23 @@
 
 <% if(editar) { %>
     <input type="hidden" id="id" name="id" value="<%= libro.id %>" >
-<% } %>
+<% } else { %>
+    <br>
+    <% } %>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="nombre">Nombre</label>
     <input type="text" class="" id="nombre" name="nombre" value="<% if (editar) { %><%= libro.nombre %><% } %>">
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="autor">Autor</label>
     <input type="text" class="" id="autor" name="autor" value="<% if (editar) { %><%= libro.autor %><% } %>">
     <br><br>
-    <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="rating">Rating</label>
-    <input type="text" type="number" value="<% if(editar) { %><%= libro.rating %><% } else { %>0<% } %>" class="" id="rating" name="rating">
+    <input type="number" value="<% if(editar) { %><%= libro.rating %><% } else { %>100<% } %>" class="" id="rating" name="rating">
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="fecha">Fecha</label>
-    <input type="text" class="" id="fecha" name="fecha">
+    <input type="number" class="" id="fecha" name="fecha" value="<% if(editar) { %><%= libro.fecha %><% } else { %>0000<% } %>">
     <br><br>
     <label class="text-black bg-gray-500 rounded-lg font-montserrat px-10 py-4" for="imagen">Imagen</label>
-    <input type="file" class="" id="imagen" name="imagen" value="<% if(editar) { %><%= tropa.imagen %><% } %>>
-    <br><br>
+    <input type="file" class="py-2" id="imagen" name="imagen" value="<% if(editar) { %><%= tropa.imagen %><% } %>">
     <input class="ring-3 rounded-md bg-purple-700 text-white" type="submit" value="Guardar" href="/">
 </form>
     </body>
