@@ -93,7 +93,7 @@ exports.get_buscar = (request, response, next) => {
 
 exports.post_eliminar = (request, response, next) => {
     console.log('post-eliminar');
-    Libro.delete(request.body.id)
+    Libro.eliminar(request.body.id)
     .then(() => {
         return Libro.fetchAll();
 
