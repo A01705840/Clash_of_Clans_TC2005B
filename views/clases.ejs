@@ -65,7 +65,7 @@
                     <div class =''>`
                     for (let libro of data.libros) {
                         html += `
-                            <div class="">
+                            <div class="py-3 px-5 bg-slate-200 text-white-400 ring-2 ring-black justify-center">
                                 <div class="">
                                     <div class="">
                                     <figure class="">
@@ -125,40 +125,29 @@
         
         for (let libro of data.libros) { 
             html += `
-            <div class="">
-                <div class="">
-                    <div class="">
-                    <figure class="">
-                        <img id="imagen_libro" src="/uploads/${libro.imagen}" alt="Imagen de ${libro.nombre}">
-                    </figure>
-                    </div>
-                    <div class="">
-                    <div class="">
-                        <div class="">
-                        <figure class="">
-                            <img src="/uploads/${libro.imagen}" alt="Imagen de ${libro.nombre}">
-                        </figure>
-                        </div>
-                        <div class="">
-                        <p class=""><a href="/libro/${libro.id}">${libro.nombre}</a></p>
-                        <p class="">@${libro.nombre} Fecha: <span id="fecha_libro">${libro.fecha}</span></p>
-                        </div>
-                    </div>
-                
-                    <div class="">
-                        Fecha: <span id="fecha_libro">${libro.fecha}</span> <br>
-                        Rating: <span id="rating_libro">${libro.rating}</span> <br> <br>
-                        <% for (let permiso of permisos) { %>
-                            <% if(permiso.permiso == 'editar_libro') { %>
-                            <a href="/libro/editar/${libro.id}" class="">Editar</a> <br> <br>
-                            <% } %>
-                        <% } %>
-                        <button onclick="eliminar(${libro.id})" class="">Eliminar</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            `;
+    <div class="p-4 bg-gray-100 border border-gray-200 rounded-lg shadow-md">
+        <div class="flex items-center justify-center">
+            <figure class="w-24 h-24">
+                <img src="/uploads/${libro.imagen}" alt="Imagen de ${libro.nombre}" class="w-full h-full object-cover rounded-lg">
+            </figure>
+        </div>
+        <div class="mt-4">
+            <p class="text-lg font-semibold"><a href="/libro/${libro.id}" class="text-blue-600 hover:underline">${libro.nombre}</a></p>
+            <p class="text-sm text-gray-600">@${libro.autor} Fecha: <span id="fecha_libro">${libro.fecha}</span></p>
+        </div>
+        <div class="mt-4">
+            <p>Fecha: <span id="fecha_libro">${libro.fecha}</span></p>
+            <p>Rating: <span id="rating_libro">${libro.rating}</span></p>
+            <% for (let permiso of permisos) { %>
+                <% if(permiso.permiso == 'editar_libro') { %>
+                    <a href="/libro/editar/${libro.id}" class="text-blue-600 hover:underline">Editar</a> <br> <br>
+                <% } %>
+            <% } %>
+            <button onclick="eliminar(${libro.id})" class="text-white bg-red-600 hover:bg-red-700 py-2 px-4 rounded-md">Eliminar</button>
+        </div>
+    </div>
+`;
+
         }
     
         html += `</div>`;

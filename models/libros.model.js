@@ -15,7 +15,7 @@ module.exports = class Libro {
 
     save() {
         return db.execute(
-            'INSERT INTO libro (nombre, autor, rating, fecha, img) VALUES (?, ?, ?, ?, ?)', 
+            'CALL registrar_libro(?, ?, ?, ?, ?)', 
             [this.nombre, this.autor, this.rating, this.fecha, this.img]
         ); //Esta es la manera larga
         
