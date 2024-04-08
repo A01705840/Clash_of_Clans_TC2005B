@@ -14,13 +14,12 @@ module.exports = class Usuario {
         .then(async(password_cifrado) => {
             try {
                 await db.execute(
-                `INSERT INTO usuario (username, nombre, password) 
-                VALUES (?, ?, ?)`, 
+                `CALL registrar_user(?, ?, ?)`, 
                 [this.username, this.nombre, password_cifrado]
                 );
 
             return db.execute(
-                'INSERT INTO asigna (username, idrol) VALUES (?, 2)', 
+                'CALL default_rol(?)', 
                 [this.username]
                 );
             }catch(error) {
