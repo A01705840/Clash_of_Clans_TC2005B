@@ -2,6 +2,7 @@
     username: username,
     permisos: permisos,
 }) %>
+<script src="https://cdn.tailwindcss.com"></script>
 <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
 
 <input id="buscar" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="Buscar..."/><br><br>
@@ -10,9 +11,6 @@
 
 <div id="busqueda_ajax">
     <% for (let libro of libros) { %>
-        <html>
-            <script src="https://cdn.tailwindcss.com"></script>
-            
             <body>
                 <h1 class="flex justify-center text-red-950 italic text-3xl py-3 ">Libros</h1>
                 <ul  class="flex justify-center">
@@ -20,7 +18,8 @@
                 <div>
                 <%= libro.nombre %>
                 <br></br>
-                <img src= "public/uploads/<%=libro.imagen %>" alt="Libro" class=" w-fit h-fit">
+                <img src= "/uploads/<%= libro.imagen %>" alt="Libro" class="w-fit h-fit">
+                <img src="/uploads/<%= libro.imagen %>" alt="">
                 <% for (let permiso of permisos) { %>
                     <% if(permiso.permiso == 'editar_libro') { %>
                     <a href="/libro/editar/<%= libro.id %>" class=" text-slate-900 hover:bg-purple-500 hover:shadow-md py-4 px-3 rounded-sm">Editar</a> <br> <br>
@@ -42,6 +41,7 @@
         </div>
         
         <script>
+            console.log("Hola desde el cliente")
             const accion_asincrona = () => {
                 const valor_busqueda = document.getElementById('buscar').value;
                 console.log("buscando..." + valor_busqueda);
@@ -105,61 +105,60 @@
                                 });
                             };
 
-            document.getElementById('buscar').onkeyup = accion_asincrona;
+            document.getElementById('buscar').onkeyup = accion_asincrona();
             const eliminar = (id) => {
-    const csrf = document.getElementById('_csrf').value;
-    fetch('/libro/eliminar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'csrf-token': csrf,
-        },
-        body: JSON.stringify({id: id})
-    }).then((result) => {
-        return result.json()
-    }).then((data) => {
-        let html = '';
-        html += `
-        <div class="columns">
+            const csrf = document.getElementById('_csrf').value;
+            fetch('/libro/eliminar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'csrf-token': csrf,
+                },
+                body: JSON.stringify({id: id})
+            }).then((result) => {
+                return result.json()
+            }).then((data) => {
+                let html = '';
+                html += `
+                <div class="columns">
+                `;
+                
+                for (let libro of data.libros) { 
+                    html += `
+            <div class="p-4 bg-gray-100 border border-gray-200 rounded-lg shadow-md">
+                <div class="flex items-center justify-center">
+                    <figure class="w-24 h-24">
+                        <img src="/uploads/${libro.imagen}" alt="Imagen de ${libro.nombre}" class="w-full h-full object-cover rounded-lg">
+                    </figure>
+                </div>
+                <div class="mt-4">
+                    <p class="text-lg font-semibold"><a href="/libro/${libro.id}" class="text-blue-600 hover:underline">${libro.nombre}</a></p>
+                    <p class="text-sm text-gray-600">@${libro.autor} Fecha: <span id="fecha_libro">${libro.fecha}</span></p>
+                </div>
+                <div class="mt-4">
+                    <p>Fecha: <span id="fecha_libro">${libro.fecha}</span></p>
+                    <p>Rating: <span id="rating_libro">${libro.rating}</span></p>
+                    <% for (let permiso of permisos) { %>
+                        <% if(permiso.permiso == 'editar_libro') { %>
+                            <a href="/libro/editar/${libro.id}" class="text-blue-600 hover:underline">Editar</a> <br> <br>
+                        <% } %>
+                    <% } %>
+                    <button onclick="eliminar(${libro.id})" class="text-white bg-red-600 hover:bg-red-700 py-2 px-4 rounded-md">Eliminar</button>
+                </div>
+            </div>
         `;
-        
-        for (let libro of data.libros) { 
-            html += `
-    <div class="p-4 bg-gray-100 border border-gray-200 rounded-lg shadow-md">
-        <div class="flex items-center justify-center">
-            <figure class="w-24 h-24">
-                <img src="/uploads/${libro.imagen}" alt="Imagen de ${libro.nombre}" class="w-full h-full object-cover rounded-lg">
-            </figure>
-        </div>
-        <div class="mt-4">
-            <p class="text-lg font-semibold"><a href="/libro/${libro.id}" class="text-blue-600 hover:underline">${libro.nombre}</a></p>
-            <p class="text-sm text-gray-600">@${libro.autor} Fecha: <span id="fecha_libro">${libro.fecha}</span></p>
-        </div>
-        <div class="mt-4">
-            <p>Fecha: <span id="fecha_libro">${libro.fecha}</span></p>
-            <p>Rating: <span id="rating_libro">${libro.rating}</span></p>
-            <% for (let permiso of permisos) { %>
-                <% if(permiso.permiso == 'editar_libro') { %>
-                    <a href="/libro/editar/${libro.id}" class="text-blue-600 hover:underline">Editar</a> <br> <br>
-                <% } %>
-            <% } %>
-            <button onclick="eliminar(${libro.id})" class="text-white bg-red-600 hover:bg-red-700 py-2 px-4 rounded-md">Eliminar</button>
-        </div>
-    </div>
-`;
 
-        }
-    
-        html += `</div>`;
-        document.getElementById('busqueda_ajax').innerHTML = html;
-        document.getElementById('notification').innerHTML = `
-        <div class="notification is-primary">
-            <button class="delete"></button>
-            El libro fue eliminado.
-        </div>
-        `;
-    }).catch((error) => console.log(error));
+            }
+        
+            html += `</div>`;
+            document.getElementById('busqueda_ajax').innerHTML = html;
+            document.getElementById('notification').innerHTML = `
+            <div class="notification is-primary">
+                <button class="delete"></button>
+                El libro fue eliminado.
+            </div>
+            `;
+        }).catch((error) => console.log(error));
 }
 </script>
             <%- include('includes/foot.ejs') %>
-    </html>
