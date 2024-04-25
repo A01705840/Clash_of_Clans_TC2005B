@@ -42,11 +42,49 @@ const csrf = require('csurf');
 const csrfProtection = csrf();
 app.use(csrfProtection);
 
-// app.use((request, response, next) => {
-//     response.locals.csrfToken = request.csrfToken();
-//     next();
-// });
+var client_id = 'f3aea5d857a444c4ae7c3347e756d516';
+var redirect_uri = 'http://localhost:3000/libro';
 
+
+app.get('/login', function(req, res) {
+
+  var state = generateRandomString(16);
+  var scope = 'user-read-private user-read-email';
+
+  res.redirect('https://accounts.spotify.com/authorize?' +
+    querystring.stringify({
+      response_type: 'code',
+      client_id: client_id,
+      scope: scope,
+      redirect_uri: redirect_uri,
+      state: state
+    }));
+});
+
+const { auth } = require('express-openid-connect');
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'http://localhost:3000',
+  clientID: '3Eeha8zjT4y0CdgM5Db0Kwxrr8HBrzUX',
+  issuerBaseURL: 'https://dev-64y0yeby12hotdsh.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+const { requiresAuth } = require('express-openid-connect');
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 //RUTAS
 const rutasUsuarios = require('./routes/user.routes');
 app.use('/users', rutasUsuarios);
